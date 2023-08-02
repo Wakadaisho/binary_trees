@@ -27,6 +27,36 @@ typedef struct binary_tree_s avl_t;
 
 typedef struct binary_tree_s heap_t;
 
+/**
+ * struct stack_s - doubly linked list representation of a stack (or queue)
+ * @node: binary tree node
+ * @prev: points to the previous element of the stack (or queue)
+ * @next: points to the next element of the stack (or queue)
+ *
+ * Description: doubly linked list node structure
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct stack_s
+{
+	binary_tree_t *node;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
+
+/**
+ * push - adds node to a stack or queue
+ * @stack: stack/queue data structure
+ * Return: void
+ */
+stack_t *push(stack_t **head, binary_tree_t *node);
+
+/**
+ * pop - remove node from a stack of queue and return it
+ * @stack: stack/queue data structure
+ * Return: void
+ */
+binary_tree_t *pop(stack_t **queue);
+
 void binary_tree_print(const binary_tree_t *);
 binary_tree_t *navigate(binary_tree_t *node, char *path);
 
@@ -50,4 +80,11 @@ size_t binary_tree_is_perfect(const binary_tree_t *tree);
 binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
+int binary_tree_is_complete(const binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
+binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
+int binary_tree_is_bst(const binary_tree_t *tree);
+bst_t *bst_insert(bst_t **tree, int value);
 #endif /* _BINARY_TREES_H_ */
